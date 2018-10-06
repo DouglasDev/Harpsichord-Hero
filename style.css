@@ -1,0 +1,52 @@
+
+body {
+    background: darkred;
+    margin: 0;
+    padding: 0;
+    font-size: 150%;
+        -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+h2,h1,
+p {
+    padding: 2px;
+    margin: 2px;
+}
+
+.main-text {
+    font-family: 'IM Fell English SC', serif;
+    margin: 0 auto;
+    color: darkgoldenrod;
+    text-align: center;
+}
+
+canvas {
+    display: block;
+    margin: 5px auto;
+    background: tan;
+
+}
+
+img {
+    border: solid 5px darkgoldenrod;
+    width: 20%;
+    height: auto;
+    margin: 5px;
+
+}
+
+.right-img {
+    float: right;
+    clear: right;
+}
+
+.left-img {
+    clear: left;
+    float: left;
+}
+
+#btn1{
+    position: absolute;
+}

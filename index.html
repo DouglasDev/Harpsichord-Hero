@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<link rel="stylesheet" href="style.css">
+
+    <script src="vendors/jquery-3.3.1.min.js"></script>
+    <script src="vendors/teoria.js"></script>
+    <script src="vendors/soundfont-player.min.js"></script>
+
+        <!-- shim -->
+    <script src="midi-player/inc/shim/Base64.js" type="text/javascript"></script>
+    <script src="midi-player/inc/shim/Base64binary.js" type="text/javascript"></script>
+    <script src="midi-player/inc/shim/WebAudioAPI.js" type="text/javascript"></script>
+    <script src="midi-player/inc/shim/WebMIDIAPI.js" type="text/javascript"></script>
+    <!-- jasmid package -->
+    <script src="midi-player/inc/jasmid/stream.js"></script>
+    <script src="midi-player/inc/jasmid/midifile.js"></script>
+    <script src="midi-player/inc/jasmid/replayer.js"></script>
+    <!-- midi.js package -->
+    <script src="midi-player/js/midi/audioDetect.js" type="text/javascript"></script>
+    <script src="midi-player/js/midi/gm.js" type="text/javascript"></script>
+    <script src="midi-player/js/midi/loader.js" type="text/javascript"></script>
+    <script src="midi-player/js/midi/plugin.audiotag.js" type="text/javascript"></script>
+    <script src="midi-player/js/midi/plugin.webaudio.js" type="text/javascript"></script>
+    <script src="midi-player/js/midi/plugin.webmidi.js" type="text/javascript"></script>
+    <script src="midi-player/js/midi/player.js" type="text/javascript"></script>
+    <script src="midi-player/js/midi/synesthesia.js" type="text/javascript"></script>
+    <!-- utils -->
+    <script src="midi-player/js/util/dom_request_xhr.js" type="text/javascript"></script>
+    <script src="midi-player/js/util/dom_request_script.js" type="text/javascript"></script>
+
+    <script src="soundfont/string_ensemble_2-ogg.js" type="text/javascript"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC" rel="stylesheet">
+</head>
+
+<body>
+    <button id="btn1" onclick="start()">click</button>
+    <img class="right-img" src="images/baroque-music.jpg" alt="ensemble">
+    <img class="left-img" src="images/vivaldirockstyle21li-vi.jpg" alt="Vivaldi">
+    <img class="right-img" src="images/Bach-Shades-2.jpg" alt="Bach">
+    <img class="left-img" src="images/carousel_harpsichord.jpg" alt="harpsichord with orchestra">
+    <div class="main-text">
+        <h2>Harpsichord Hero</h2>
+        <p>Get ready to rock out like it's 1685!<br />
+            Instructions Controls Select Song Start Pause<br />
+        </p>
+    <!-- 
+        Controls: <strong>Mouse:</strong> select note <strong> Left Click:</strong> play note
+        <strong>Keys:</strong> play motif
+ 	-->
+    </div>
+    <canvas width="600" height="480"></canvas>
+</body>
+
+    <script src="scales_and_chords.js" type="text/javascript"></script>
+    <script src="app.js" type="text/javascript"></script>
+
+</html>
