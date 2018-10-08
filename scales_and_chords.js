@@ -1,4 +1,37 @@
-var scaleArr = teoria.scale('eb', 'major').simple();
+var currentScale=['eb', 'major']
+var scaleArr = teoria.scale(...currentScale).simple();
+
+
+var vivaldiWinterLargo = [
+{ chord: 'EbM', beats: 4, scale:['eb', 'major'] }, { chord: 'BbM', beats: 8 }, { chord: 'EbM', beats: 4 },
+{ chord: 'BbM', beats: 4 }, { chord: 'Cm', beats: 2 },{ chord: 'AbM', beats: 2 },
+{ chord: 'BbM', beats: 4 }, { chord: 'AbM', beats: 2 }, { chord: 'FM', beats: 2 }, 
+{ chord: 'BbM', beats: 8 }, { chord: 'EbM', beats: 6 },{ chord: 'FM', beats: 2 },
+{ chord: 'BbM', beats: 4, scale: ['Bb', 'major']},{ chord: 'FM', beats: 8 },{ chord: 'BbM', beats: 8 },
+{ chord: 'FM', beats: 8 },{ chord: 'BbM', beats: 8 },
+{ chord: 'EbM', beats: 4, scale:['eb', 'major'] },{ chord: 'AbM', beats: 4 },{ chord: 'BbM', beats: 4 },
+{ chord: 'Cm', beats: 4 },{ chord: 'BbM', beats: 14 },
+{ chord: 'EbM', beats: 2 },{ chord: 'BbM', beats: 4 },{ chord: 'EbM', beats: 2 },{ chord: 'BbM', beats: 2 },
+,{ chord: 'EbM', beats: 20 }
+];
+
+//length of beat
+let b=(60/(45*2))
+
+let motifObject={
+    'a':[ { time: 0, note:0}, { time: 0.5*b, note:1},{ time: 1*b, note:2},{ time: 1.5*b, note:3}],//1234
+    's':[ { time: 0, note:3}, { time: 0.5*b, note:2},{ time: 1*b, note:1},{ time: 1.5*b, note:0}],//4321
+    'd':[ { time: 0, note:0}, { time: 0.5*b, note:1},{ time: 1*b, note:0}],//121
+    'f':[ { time: 0, note:1}, { time: 0.5*b, note:0},{ time: 1*b, note:1}],//212
+    'g':[ { time: 0, note:0}, { time: 0.5*b, note:2},{ time: 1*b, note:4}],//135
+    'h':[ { time: 0, note:4}, { time: 0.5*b, note:2},{ time: 1*b, note:0}],//531
+    'j':[ { time: 0, note:1}, { time: 0.2*b, note:0},{ time: .4*b, note:1},
+          { time: 0.6*b, note:0}, { time: 0.8*b, note:1},{ time: 1*b, note:0}],//trill
+ 
+}
+
+
+
 var allNotes = [{ octave: 'B5', note: 'b' },
     { octave: 'Bb5', note: 'bb' },
     { octave: 'A5', note: 'a' },
@@ -47,19 +80,4 @@ var allNotes = [{ octave: 'B5', note: 'b' },
     { octave: 'D2', note: 'd' },
     { octave: 'Db2', note: 'db' },
     { octave: 'C2', note: 'c' },
-];
-
-var vivaldiWinterLargo = [
-    { chord: 'EbM', beats: 4 }, { chord: 'BbM', beats: 8 }, 
-    { chord: 'EbM', beats: 8 }, { chord: 'Cm', beats: 4 },
-    { chord: 'BbM', beats: 4 }, { chord: 'AbM', beats: 2 }, 
-    { chord: 'Am', beats: 2 },{ chord: 'BbM', beats: 8 }, 
-    { chord: 'EbM', beats: 8 },{ chord: 'BbM', beats: 4 }, 
-    { chord: 'FM', beats: 8 }, { chord: 'BbM', beats: 8 }, 
-    { chord: 'FM', beats: 8 },{ chord: 'BbM', beats: 8 }, 
-    { chord: 'EbM', beats: 4 }, { chord: 'AbM', beats: 2 }, 
-    { chord: 'BbM', beats: 2 },{ chord: 'Cm', beats: 4 }, 
-    { chord: 'BbM', beats: 14 }, { chord: 'EbM', beats: 2 }, 
-    { chord: 'BbM', beats: 4 },{ chord: 'EbM', beats: 2 }, 
-    { chord: 'BbM', beats: 2 }, { chord: 'EbM', beats: 12 }
 ];

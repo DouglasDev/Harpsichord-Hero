@@ -1,18 +1,13 @@
+body,*{    
+    margin: 0;
+    padding: 0;}
 
 body {
     background: darkred;
-    margin: 0;
-    padding: 0;
     font-size: 150%;
-        -moz-user-select: none;
+    -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
-}
-
-h2,h1,
-p {
-    padding: 2px;
-    margin: 2px;
 }
 
 .main-text {
@@ -38,15 +33,53 @@ img {
 }
 
 .right-img {
+    width: 20%;
     float: right;
     clear: right;
 }
 
 .left-img {
+    width: 20%;
     clear: left;
     float: left;
 }
 
 #btn1{
     position: absolute;
+}
+
+
+#start-button{
+    background-color: silver;
+    color: black;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+/*
+canvas{
+    float: right;
+}
+
+#keyboard-img{
+
+    float: right;
+    height: 480px;
+    width:auto;
+    border: none;
+    padding: 0;
+   margin: 0; 
+}
+#harpsichord{
+    float: none;
+}
+*/
+
+
+@media screen and (max-width: 1100px ) {
+img {display: none;}
+
 }
