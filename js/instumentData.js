@@ -1,48 +1,48 @@
 
 //length of beat
-let quarter=(60/(45*2)),
+let quarter=(60/90),
 	eighth=quarter/2,
 	sixteenth=eighth/2;
 
 let motifObject={
-	//home row - simple patterns
-    'a':convertTime([ { time: eighth, note:0}, { time: eighth, note:1},
-    				  { time: eighth, note:2},{ time: eighth, note:3}]),//1234
-    's':convertTime([ { time: eighth, note:0}, { time: eighth, note:2},{ time: eighth, note:4}]),//135
-    'd':convertTime([ { time: sixteenth, note:1}, { time: sixteenth, note:0},{ time: sixteenth, note:1},
-          { time: sixteenth, note:0}, { time: sixteenth, note:1},{ time: sixteenth, note:0}]),//trill
-    'f':convertTime([ { time: sixteenth, note:0}, { time: sixteenth, note:-1},{ time: eighth, note:0}]),//mordent
-    'g':convertTime([ { time: sixteenth, note:0}, { time: sixteenth, note:1},{ time: sixteenth, note:0}
-    				, { time: sixteenth, note:-1},{ time: eighth, note:0}]),//mordent
+    //home row - simple patterns
+    'a':convertTime([ { time: eighth, interval:1}, { time: eighth, interval:2},
+                      { time: eighth, interval:3},{ time: eighth, interval:4}]),//1234
+    's':convertTime([ { time: eighth, interval:1}, { time: eighth, interval:3},{ time: eighth, interval:5}]),//135
+    'd':convertTime([ { time: sixteenth, interval:2}, { time: sixteenth, interval:1},{ time: sixteenth, interval:2},
+                      { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: sixteenth, interval:1}]),//trill
+    'f':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:-2},{ time: eighth, interval:1}]),//mordent
+    'g':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: sixteenth, interval:1}
+                    , { time: sixteenth, interval:-2},{ time: eighth, interval:1}]),//mordent
 
- 	//top row - bach
- 	'q':convertTime([ { time: sixteenth, note:0}, { time: sixteenth, note:1},{ time: eighth, note:2},
-    				  { time: eighth, note:1},{ time: eighth, note:0},{ time: eighth, note:2},{ time: eighth, note:4}]),
- 	'w':convertTime([ { time: sixteenth, note:0}, { time: sixteenth, note:1},{ time: sixteenth, note:2},
-    				  { time: sixteenth, note:3},{ time: eighth, note:4},{ time: eighth, note:7},
-    				  { time: eighth, note:6},{ time: eighth, note:4},{ time: eighth, note:1},{ time: eighth, note:3}]),
- 	'e':convertTime([ { time: quarter, note:0}, { time: eighth, note:3},{ time: eighth, note:1},
-    				  { time: eighth, note:-1},{ time: eighth, note:-2},{ time: eighth, note:-3},{ time: eighth, note:-2},
-    				  { time: quarter, note:-3}]),
-	'r':convertTime([ { time: eighth, note:2}, { time: eighth, note:0},{ time: eighth, note:-3},
-    				  { time: eighth, note:-4},{ time: eighth, note:-1},{ time: eighth, note:-2},{ time: eighth, note:2},
-    				  { time: eighth, note:1},{ time: quarter, note:1}]),
+    //top row - bach
+    'q':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: eighth, interval:3},
+                      { time: eighth, interval:2},{ time: eighth, interval:1},{ time: eighth, interval:3},{ time: eighth, interval:5}]),
+    'w':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: sixteenth, interval:3},
+                      { time: sixteenth, interval:4},{ time: eighth, interval:5},{ time: eighth, interval:8},
+                      { time: eighth, interval:7},{ time: eighth, interval:5},{ time: eighth, interval:2},{ time: eighth, interval:3}]),
+    'e':convertTime([ { time: quarter, interval:1}, { time: eighth, interval:4},{ time: eighth, interval:2},
+                      { time: eighth, interval:-2},{ time: eighth, interval:-3},{ time: eighth, interval:-4},
+                      { time: eighth, interval:-3},{ time: quarter, interval:-4}]),
+    'r':convertTime([ { time: eighth, interval:3}, { time: eighth, interval:1},{ time: eighth, interval:-4},
+                      { time: eighth, interval:-5},{ time: eighth, interval:-2},{ time: eighth, interval:-3},
+                      { time: eighth, interval:3},{ time: eighth, interval:2},{ time: quarter, interval:2}]),
 
- 	//bottom row - vivaldi
-	'z':convertTime([ { time: eighth, note:0}, { time: sixteenth, note:4},{ time: sixteenth, note:3},
-    				  { time: eighth, note:2},{ time: sixteenth, note:1},{ time: sixteenth, note:0},
-    				  { time: eighth, note:1}]),
-	'x':convertTime([ { time: sixteenth, note:0}, { time: sixteenth, note:2},{ time: sixteenth, note:4},
-    				  { time: sixteenth, note:2},{ time: sixteenth, note:0},{ time: sixteenth, note:2},
-    				  { time: sixteenth, note:4},{ time: sixteenth, note:2}]),
-	'c':convertTime([ { time: eighth, note:0}, { time: sixteenth, note:4},{ time: sixteenth, note:3},
-    				  { time: eighth, note:4},{ time: eighth, note:2},{ time: eighth, note:0},
-    				  { time: sixteenth, note:3},{ time: sixteenth, note:2},{ time: eighth, note:3},
-    				  { time: eighth, note:1},]),
-	'v':convertTime([ { time: sixteenth, note:0}, { time: sixteenth, note:1},{ time: sixteenth, note:2},{ time: sixteenth, note:3},
-					  { time: sixteenth, note:4},{ time: sixteenth, note:5},{ time: sixteenth, note:6},{ time: sixteenth, note:7},
-					  { time: eighth, note:7},{ time: eighth, note:4},{ time: eighth, note:2},{ time: eighth, note:0}]),
-
+    //bottom row - vivaldi
+    'z':convertTime([ { time: eighth, interval:1}, { time: sixteenth, interval:5},{ time: sixteenth, interval:4},
+                      { time: eighth, interval:3},{ time: sixteenth, interval:2},{ time: sixteenth, interval:1},
+                      { time: eighth, interval:2}]),
+    'x':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:3},{ time: sixteenth, interval:5},
+                      { time: sixteenth, interval:3},{ time: sixteenth, interval:1},{ time: sixteenth, interval:3},
+                      { time: sixteenth, interval:5},{ time: sixteenth, interval:3}]),
+    'c':convertTime([ { time: eighth, interval:1}, { time: sixteenth, interval:5},{ time: sixteenth, interval:4},
+                      { time: eighth, interval:5},{ time: eighth, interval:3},{ time: eighth, interval:1},
+                      { time: sixteenth, interval:4},{ time: sixteenth, interval:3},{ time: eighth, interval:4},
+                      { time: eighth, interval:2},]),
+    'v':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: sixteenth, interval:3},
+                      { time: sixteenth, interval:4},{ time: sixteenth, interval:5},{ time: sixteenth, interval:6},
+                      { time: sixteenth, interval:7},{ time: sixteenth, interval:8},{ time: eighth, interval:8},
+                      { time: eighth, interval:5},{ time: eighth, interval:3},{ time: eighth, interval:1}]),
 }
 
 //converts from note length time to time from the beginning of the sequence

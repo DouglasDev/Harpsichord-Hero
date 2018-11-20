@@ -1,9 +1,10 @@
 //split up into separate functions - variable manipulation in loop, visual notes, play instrument
 //should include future notes
-function newNote(instrument) {
-    //select new note based on y position
-    let currentNote = allNotes[currentNoteIndex];
-    
+function newNote(instrument,currentNote) {
+    if (currentNote==undefined){
+        //select new note based on y position
+        currentNote = allNotes[currentNoteIndex];
+    }
     //play the note
     mouseIsDown = 1;
     //add note to array of visualized notes
@@ -24,29 +25,20 @@ function generateMotifNotes(e,motif){
     let specialPitch;
 
     findClosestAllowedMouseY(e); 
-    scaleArr=getCurrentChord().scale;
+    scaleArr=Chords.getCurrentChord().scale;
     let allOctaveScale=ScaleInAllOctaves(scaleArr)
     let position= allOctaveScale.indexOf(currentNote.pitch);
     //if it can't find the position, search for enharmonic equivalent
     if (position==-1){
-        //      console.log(scaleArr)
-        //      console.log(allOctaveScale)
-        //      console.log(currentNote.pitch)
         position= allOctaveScale.indexOf(getPitchEnharmonic(currentNote.pitch));
-
-        if (position==-1){
-            specialPitch= currentNote.pitch;
-            console.clear();
-            console.log(currentNote.pitch)
-            console.log(getPitchEnharmonic(currentNote.pitch))
-            console.log(Chords.getCurrentChord())
-
-        }
     }
-    //(allNotes[e].note == note || getEnharmonic(allNotes[e].note) == note)
     motif.forEach((el,index)=>{
-         let noteInterval=motif[index].note,
-            type=motif[index].type,
+         let noteInterval;
+         if (motif[index].interval>0){noteInterval=motif[index].interval-1}
+         if (motif[index].interval==0 || motif[index].interval==-1){console.log("error: can't set motif interval to 0 or -1")}
+         if (motif[index].interval<0){noteInterval=motif[index].interval+1}
+
+         let  type=motif[index].type,
             note,
             time;
          if (doubleSpeed==true) {time=motif[index].time/2;}
@@ -105,4 +97,9 @@ function findClosestAllowedMouseY(e){
             break;
         }   
     }
+}
+
+
+const numberKeys={
+    '`':'doesn','1':'matter','2':11,'3':10,'4':9,'5':8,'6':7,'7':6,'8':5,'9':4,'0':3,'-':2,'=':1,'[':0,']':-1,'\\':-2
 }

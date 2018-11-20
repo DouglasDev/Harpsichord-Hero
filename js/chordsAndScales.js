@@ -11,24 +11,27 @@ function prepareChordTimeAndPitchArray(array){
         ChordTimeArray.push(currentTime);//remove later
         currentTime+=chord.beats;
 
-
-        //calculate scale for array
-        // let searchChord;
+        //assign each chord a key signature
         if (chord.keySig==undefined){
             for (var chordIndex = index ;chordIndex>=0; chordIndex--){
                 if (array[chordIndex].keySig!=undefined) {
                     chord.keySig=array[chordIndex].keySig;
+                    break;
                 }
             }
         }
+        //assign each chord a scale
+        if (chord.keySig[1]=='minor'){ 
+            //if dominant chord in minor key, set the scale to melodic minor            
+            if(teoria.chord(chord.keySig[0]).dominant('7').name== chord.chord|| 
+                teoria.chord(chord.keySig[0]).dominant().name==chord.chord){
+                chord.scale= teoria.scale(chord.keySig[0],'melodicminor').simple();
+            }
+            else{chord.scale= teoria.scale(...chord.keySig).simple();}
+        }
+        else{chord.scale= teoria.scale(...chord.keySig).simple();}
 
-     //   if ((chord.scale[2]=='minor')&& 
-      //      (teoria.chord(scale).dominant('7').name== || teoria.chord(scale).dominant().name==)
-
-        //if dominant chord in minor key, set the scale to melodic minor
-        //teoria.chord(scale).dominant('7')
-        //teoria.scale('d','melodicminor').simple();
-
+        //todo: convert to scale with all pitches - probably unnecessary
 
         //calculate all selectable pitches
         currentChordNotes = teoria.chord(chord.chord).simple();

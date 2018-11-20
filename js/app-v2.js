@@ -80,11 +80,16 @@ function setupSoundFontInstrument(){
             event.preventDefault(); 
             if (e.key==' '){doubleSpeed=true;}
             if (e.key=='Shift'){descend=true;}
-            //console.log(e.key)
+            console.log(e.key)
             let pressedkey= e.key.toLowerCase()
             if (motifObject.hasOwnProperty(pressedkey)){
                    let motifOutput= generateMotifNotes(e,motifObject[pressedkey])
                     harpsichord.schedule(ac.currentTime, motifOutput);
+            }
+            if (numberKeys.hasOwnProperty(pressedkey)){
+                let pitchArray = Chords.getCurrentChord().allPitches;
+                let tempKeyObject= getTempKeyObject(pitchArray);
+                newNote(harpsichord,tempKeyObject[pressedkey]);
             }
         });
 
@@ -96,3 +101,14 @@ function setupSoundFontInstrument(){
 }
 
 //setup ends
+
+function getTempKeyObject(pitchArray){
+    let keysList=['`','1','2','3','4','5','6','7','8','9','0','-','=','[',']','\\']
+    let keysListPosition=0,output={};
+
+    for (let i=pitchArray.length-1;i>=0;i--){
+        output[keysList[keysListPosition]]=pitchArray[i];
+        keysListPosition+=1;
+    }
+    return output;
+}

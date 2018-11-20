@@ -1,11 +1,3 @@
-//var currentScale=['d', 'minor']
-//var scaleArr = teoria.scale(...currentScale).simple();
-//console.log(scaleArr)
-
-//let textchort=teoria.chord('A7').simple()
-//console.log(textchort);
-
-
 var vivaldiWinterLargo = [
 { chord: 'EbM', beats: 4, keySig:['eb', 'major'] }, { chord: 'BbM', beats: 4 },
 { chord: 'BbM7', beats: 4 }, { chord: 'EbM', beats: 4 },

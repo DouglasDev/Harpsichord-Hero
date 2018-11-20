@@ -1,0 +1,9 @@
+-bug- mouse near bottom, selected note doesn't update on chord change
+-bug- selected note update on chord change - slightly lags behind song
+-bug - after playing motif, note gets stuck
+-feature - implement note types for motif (chromatic, chord tone)
+-feature - sticky selected note - toogle with tab/space
+-feature - implement note length visuals for motif
+-feature - play chords with number keys
+-feature - record and share songs
+
