@@ -10,7 +10,7 @@ function drawBar(startingBeat, duration, pitch, color){
 function drawNoteSymbol(x,y,color,type){
     canvasContent.fillStyle = color;
     canvasContent.strokeStyle = color; 
-
+//maybe shift left by 5px???? - could be causing delay
     //draw circle
     canvasContent.beginPath();
     canvasContent.arc(x+305, y+6, 5, 0, 2 * Math.PI, false);
@@ -64,7 +64,7 @@ function pitchToYPosition(pitch){
 
 function startViewLoop(frameRate){
     setInterval(() => {
-        findClosestAllowedMouseY(storedMouse);
+        if (cursorControl==true) findClosestAllowedMouseY(storedMouseY);
         //clear canvas
         canvasContent.clearRect(0, 0, canvasSelector.width, canvasSelector.height);
         //draw chords
@@ -72,7 +72,8 @@ function startViewLoop(frameRate){
         //draw notes
         drawNotes();
         //draw note at cursor position
-        drawNoteSymbol(0,mouseY,'white');
+        let cursorPos= pitchToYPosition(allNotes[currentNoteIndex].pitch)
+        drawNoteSymbol(0,cursorPos,'white');
 
     }, 1000/frameRate);
 }

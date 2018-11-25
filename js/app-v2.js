@@ -22,16 +22,17 @@ let visualNotes = []; //array of all notes to display onscreen with
 //dirty global variables
 let mouseY = 0,
     mouseIsDown,
-    storedMouse=240;
+    storedMouseY=240;
 
 let currentNoteIndex = 0 //position in array of all notes
 
 
 let doubleSpeed=false,
-    descend=false;
+    invert=-1,
+    descend=false,
+    cursorControl=false;
 
 let scaleArr
-
 
 //starts background midi
 function start(){
@@ -65,37 +66,44 @@ let ac = new AudioContext();
 
 function setupSoundFontInstrument(){
 
-    Soundfont.instrument(ac, 'harpsichord')
-    .then(function(harpsichord) {
+    Soundfont.instrument(ac, 'harpsichord').then(
+        function(harpsichord) {
         //event listeners
 
         //canvasSelector.addEventListener("mouseup", endNote);
-        canvasSelector.addEventListener("mousemove", findClosestAllowedMouseY);
+        document.addEventListener("mousemove", function(e){
+            storedMouseY=e.clientY
+            if (cursorControl==true) findClosestAllowedMouseY(e.clientY);
+        });
 
         document.addEventListener("mousedown", function playNewNote(e) {
+            findClosestAllowedMouseY(e.clientY);
             newNote(harpsichord);
         });
 
         document.addEventListener("keydown", function playMotif(e){
             event.preventDefault(); 
-            if (e.key==' '){doubleSpeed=true;}
-            if (e.key=='Shift'){descend=true;}
-            console.log(e.key)
+            //if (e.key=='Tab'){doubleSpeed=true;}
+            if (e.key=='Tab'){descend=true;}
+            if (e.key=='Shift'){invert=1;}
+            if (e.key==' '){cursorControl=true;}
             let pressedkey= e.key.toLowerCase()
             if (motifObject.hasOwnProperty(pressedkey)){
                    let motifOutput= generateMotifNotes(e,motifObject[pressedkey])
                     harpsichord.schedule(ac.currentTime, motifOutput);
             }
+            let pitchArray = Chords.getCurrentChord().allPitches;
+            let numberKeys= getTempKeyObject(pitchArray)
             if (numberKeys.hasOwnProperty(pressedkey)){
-                let pitchArray = Chords.getCurrentChord().allPitches;
-                let tempKeyObject= getTempKeyObject(pitchArray);
-                newNote(harpsichord,tempKeyObject[pressedkey]);
+                newNote(harpsichord,numberKeys[pressedkey]);
             }
         });
 
         document.addEventListener("keyup", function playMotif(e){
-            if (e.key==' '){doubleSpeed=false;}
-            if (e.key=='Shift'){descend=false;}     
+            //if (e.key=='Tab'){doubleSpeed=false;}
+            if (e.key=='Tab'){descend=false;}            
+            if (e.key=='Shift'){invert=-1;}
+            if (e.key==' '){cursorControl=false;}
         });
     });
 }

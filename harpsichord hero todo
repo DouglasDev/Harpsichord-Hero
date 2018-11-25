@@ -1,9 +1,49 @@
--bug- mouse near bottom, selected note doesn't update on chord change
--bug- selected note update on chord change - slightly lags behind song
--bug - after playing motif, note gets stuck
 -feature - implement note types for motif (chromatic, chord tone)
--feature - sticky selected note - toogle with tab/space
 -feature - implement note length visuals for motif
--feature - play chords with number keys
 -feature - record and share songs
+-repeating chord progressions
 
+
+
+
+Chords.ChordArray=
+0:
+allPitches: (12) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+beats: 6
+chord: "Dm"
+chordNotes: (3) ["d", "f", "a"]
+index: 0
+keySig: (2) ["d", "minor"]
+scale: (7) ["d", "e", "f", "g", "a", "bb", "c"]
+startingBeat: 0
+__proto__: Object
+1:
+
+allPitches: Array(16)
+0: {index: 2, rootNote: true, pitch: "A5", y: 20}
+1: {index: 4, rootNote: false, pitch: "G5", y: 40}
+2: {index: 7, rootNote: false, pitch: "E5", y: 70}
+3: {index: 10, rootNote: false, pitch: "Db5", y: 100}
+4: {index: 14, rootNote: true, pitch: "A4", y: 140}
+5: {index: 16, rootNote: false, pitch: "G4", y: 160}
+6: {index: 19, rootNote: false, pitch: "E4", y: 190}
+7: {index: 22, rootNote: false, pitch: "Db4", y: 220}
+8: {index: 26, rootNote: true, pitch: "A3", y: 260}
+9: {index: 28, rootNote: false, pitch: "G3", y: 280}
+10: {index: 31, rootNote: false, pitch: "E3", y: 310}
+11: {index: 34, rootNote: false, pitch: "Db3", y: 340}
+12: {index: 38, rootNote: true, pitch: "A2", y: 380}
+13: {index: 40, rootNote: false, pitch: "G2", y: 400}
+14: {index: 43, rootNote: false, pitch: "E2", y: 430}
+15: {index: 46, rootNote: false, pitch: "Db2", y: 460}
+
+
+allPitches: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+beats: 6
+chord: "A7"
+chordNotes: (4) ["a", "c#", "e", "g"]
+index: 1
+keySig: (2) ["d", "minor"]
+scale: (7) ["d", "e", "f", "g", "a", "b", "c#"]
+startingBeat: 6
+__proto__: Object

@@ -1,49 +1,76 @@
 
 //length of beat
-let quarter=(60/90),
+let quarter=(60/90)/2,
 	eighth=quarter/2,
 	sixteenth=eighth/2;
 
+//new motif object - all motifs are Bach quotations
 let motifObject={
-    //home row - simple patterns
-    'a':convertTime([ { time: eighth, interval:1}, { time: eighth, interval:2},
-                      { time: eighth, interval:3},{ time: eighth, interval:4}]),//1234
-    's':convertTime([ { time: eighth, interval:1}, { time: eighth, interval:3},{ time: eighth, interval:5}]),//135
-    'd':convertTime([ { time: sixteenth, interval:2}, { time: sixteenth, interval:1},{ time: sixteenth, interval:2},
-                      { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: sixteenth, interval:1}]),//trill
-    'f':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:-2},{ time: eighth, interval:1}]),//mordent
-    'g':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: sixteenth, interval:1}
-                    , { time: sixteenth, interval:-2},{ time: eighth, interval:1}]),//mordent
+    'a':convertTime([ { time: eighth, interval:1}, 
+                      { time: eighth, interval:2},
+                      { time: eighth, interval:3, type:'chordTone',offsetFutureNotes:false},
+                      { time: eighth, interval:1},
+                      { time: eighth, interval:2, type:'silent'}]),
+    's':convertTime([ { time: eighth, interval:1}, 
+                      { time: eighth, interval:2},
+                      { time: eighth, interval:3},
+                      { time: eighth, interval:4, type:'chordTone',offsetFutureNotes:false},
+                      { time: eighth, interval:2, type:'silent'}]),    
+    'd':convertTime([ { time: eighth, interval:1}, 
+                      { time: eighth, interval:2,type:'chordTone',offsetFutureNotes:true},
+                      { time: eighth, interval:2},
+                      { time: eighth, interval:3},
+                      { time: eighth, interval:3, type:'silent'}]),    
 
-    //top row - bach
-    'q':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: eighth, interval:3},
-                      { time: eighth, interval:2},{ time: eighth, interval:1},{ time: eighth, interval:3},{ time: eighth, interval:5}]),
-    'w':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: sixteenth, interval:3},
-                      { time: sixteenth, interval:4},{ time: eighth, interval:5},{ time: eighth, interval:8},
-                      { time: eighth, interval:7},{ time: eighth, interval:5},{ time: eighth, interval:2},{ time: eighth, interval:3}]),
-    'e':convertTime([ { time: quarter, interval:1}, { time: eighth, interval:4},{ time: eighth, interval:2},
-                      { time: eighth, interval:-2},{ time: eighth, interval:-3},{ time: eighth, interval:-4},
-                      { time: eighth, interval:-3},{ time: quarter, interval:-4}]),
-    'r':convertTime([ { time: eighth, interval:3}, { time: eighth, interval:1},{ time: eighth, interval:-4},
-                      { time: eighth, interval:-5},{ time: eighth, interval:-2},{ time: eighth, interval:-3},
-                      { time: eighth, interval:3},{ time: eighth, interval:2},{ time: quarter, interval:2}]),
-
-    //bottom row - vivaldi
-    'z':convertTime([ { time: eighth, interval:1}, { time: sixteenth, interval:5},{ time: sixteenth, interval:4},
-                      { time: eighth, interval:3},{ time: sixteenth, interval:2},{ time: sixteenth, interval:1},
-                      { time: eighth, interval:2}]),
-    'x':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:3},{ time: sixteenth, interval:5},
-                      { time: sixteenth, interval:3},{ time: sixteenth, interval:1},{ time: sixteenth, interval:3},
-                      { time: sixteenth, interval:5},{ time: sixteenth, interval:3}]),
-    'c':convertTime([ { time: eighth, interval:1}, { time: sixteenth, interval:5},{ time: sixteenth, interval:4},
-                      { time: eighth, interval:5},{ time: eighth, interval:3},{ time: eighth, interval:1},
-                      { time: sixteenth, interval:4},{ time: sixteenth, interval:3},{ time: eighth, interval:4},
-                      { time: eighth, interval:2},]),
-    'v':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: sixteenth, interval:3},
-                      { time: sixteenth, interval:4},{ time: sixteenth, interval:5},{ time: sixteenth, interval:6},
-                      { time: sixteenth, interval:7},{ time: sixteenth, interval:8},{ time: eighth, interval:8},
-                      { time: eighth, interval:5},{ time: eighth, interval:3},{ time: eighth, interval:1}]),
 }
+
+
+// let motifObject={
+//     //home row - simple patterns
+//     'a':convertTime([ { time: eighth, interval:1}, { time: eighth, interval:2},
+//                       { time: eighth, interval:3, type:'chordTone'},{ time: eighth, interval:4}]),//1234
+//     's':convertTime([ { time: eighth, interval:1}, { time: eighth, interval:3, type:'chordTone'},
+//                         { time: eighth, interval:5, type:'chordTone'}]),//135
+//     'd':convertTime([ { time: sixteenth, interval:2}, { time: sixteenth, interval:1},{ time: sixteenth, interval:2},
+//                       { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: sixteenth, interval:1}]),//trill
+//     'f':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:-2},{ time: eighth, interval:1}]),//mordent
+//     'g':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: sixteenth, interval:1}
+//                     , { time: sixteenth, interval:-2},{ time: eighth, interval:1}]),//mordent
+
+//     //top row - bach
+//     'q':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: eighth, interval:3, type:'chordTone'},
+//                       { time: eighth, interval:2},{ time: eighth, interval:1},{ time: eighth, interval:3, type:'chordTone'},
+//                       { time: eighth, interval:5, type:'chordTone'}]),
+//     'w':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: sixteenth, interval:3},
+//                       { time: sixteenth, interval:4},{ time: eighth, interval:5},{ time: eighth, interval:8},
+//                       { time: eighth, interval:7},{ time: eighth, interval:5, type:'chordTone'},
+//                       { time: eighth, interval:2},{ time: eighth, interval:3, type:'chordTone'}]),
+//     'e':convertTime([ { time: quarter, interval:1}, { time: eighth, interval:4},{ time: eighth, interval:2},
+//                       { time: eighth, interval:-2},{ time: eighth, interval:-3},{ time: eighth, interval:-4, type:'chordTone'},
+//                       { time: eighth, interval:-3},{ time: quarter, interval:-4}]),
+//     'r':convertTime([ { time: eighth, interval:3, type:'chordTone'}, { time: eighth, interval:1},{ time: eighth, interval:-4, type:'chordTone'},
+//                       { time: eighth, interval:-5},{ time: eighth, interval:-2},{ time: eighth, interval:-3},
+//                       { time: eighth, interval:3, type:'chordTone'},{ time: eighth, interval:2},{ time: quarter, interval:2}]),
+
+//     //bottom row - vivaldi
+//     'z':convertTime([ { time: eighth, interval:1}, { time: sixteenth, interval:5, type:'chordTone'},{ time: sixteenth, interval:4},
+//                       { time: eighth, interval:3, type:'chordTone'},{ time: sixteenth, interval:2},
+//                       { time: sixteenth, interval:1, type:'chordTone'},{ time: eighth, interval:2}]),
+//     'x':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:3, type:'chordTone'},
+//                       { time: sixteenth, interval:5, type:'chordTone'},
+//                       { time: sixteenth, interval:3, type:'chordTone'},{ time: sixteenth, interval:1, type:'chordTone'},
+//                       { time: sixteenth, interval:3, type:'chordTone'},
+//                       { time: sixteenth, interval:5, type:'chordTone'},{ time: sixteenth, interval:3, type:'chordTone'}]),
+//     'c':convertTime([ { time: eighth, interval:1}, { time: sixteenth, interval:5, type:'chordTone'},{ time: sixteenth, interval:4},
+//                       { time: eighth, interval:5, type:'chordTone'},{ time: eighth, interval:3, type:'chordTone'},
+//                       { time: eighth, interval:1, type:'chordTone'},
+//                       { time: sixteenth, interval:4},{ time: sixteenth, interval:3, type:'chordTone'},{ time: eighth, interval:4},
+//                       { time: eighth, interval:2},]),
+//     'v':convertTime([ { time: sixteenth, interval:1}, { time: sixteenth, interval:2},{ time: sixteenth, interval:3},
+//                       { time: sixteenth, interval:4},{ time: sixteenth, interval:5},{ time: sixteenth, interval:6},
+//                       { time: sixteenth, interval:7},{ time: sixteenth, interval:8},{ time: eighth, interval:8},
+//                       { time: eighth, interval:5, type:'chordTone'},{ time: eighth, interval:3, type:'chordTone'},{ time: eighth, interval:1, type:'chordTone'}]),
+// }
 
 //converts from note length time to time from the beginning of the sequence
 function convertTime(arr){

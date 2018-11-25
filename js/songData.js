@@ -13,7 +13,7 @@ var vivaldiWinterLargo = [
 ];
 
 var vivaldiLaFollia =[
-{ chord: 'Dm', beats: 6, keySig:['d', 'minor'] }, { chord: 'A7', beats: 6 },{ chord: 'Dm', beats: 6 },{ chord: 'C', beats: 6 },{ chord: 'F', beats: 6 },{ chord: 'C', beats: 6 },{ chord: 'Dm', beats: 6 },{ chord: 'A7', beats: 6 },
+{ chord: 'Dm', beats: 6, keySig:['d', 'minor'], repeats:10 }, { chord: 'A7', beats: 6 },{ chord: 'Dm', beats: 6 },{ chord: 'C', beats: 6 },{ chord: 'F', beats: 6 },{ chord: 'C', beats: 6 },{ chord: 'Dm', beats: 6 },{ chord: 'A7', beats: 6 },
 { chord: 'Dm', beats: 6}, { chord: 'A7', beats: 6 },{ chord: 'Dm', beats: 6 },{ chord: 'C', beats: 6 },{ chord: 'F', beats: 6 },{ chord: 'C', beats: 6 },{ chord: 'Dm', beats: 2 },{ chord: 'A7', beats: 4 },{ chord: 'Dm', beats: 6},
 { chord: 'Dm', beats: 6 }, { chord: 'A7', beats: 6 },{ chord: 'Dm', beats: 6 },{ chord: 'C', beats: 6 },{ chord: 'F', beats: 6 },{ chord: 'C', beats: 6 },{ chord: 'Dm', beats: 6 },{ chord: 'A7', beats: 6 },
 { chord: 'Dm', beats: 6}, { chord: 'A7', beats: 6 },{ chord: 'Dm', beats: 6 },{ chord: 'C', beats: 6 },{ chord: 'F', beats: 6 },{ chord: 'C', beats: 6 },{ chord: 'Dm', beats: 2 },{ chord: 'A7', beats: 4 },{ chord: 'Dm', beats: 6},
