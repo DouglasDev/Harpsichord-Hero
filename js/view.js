@@ -8,6 +8,8 @@ function drawBar(startingBeat, duration, pitch, color){
 
 
 function drawNoteSymbol(x,y,color,type){
+//    console.log(type)
+
     canvasContent.fillStyle = color;
     canvasContent.strokeStyle = color; 
 //maybe shift left by 5px???? - could be causing delay
@@ -22,32 +24,35 @@ function drawNoteSymbol(x,y,color,type){
     canvasContent.moveTo(x+310, y+6);
     canvasContent.lineTo(x+310, y-20);
 
-    if (type=="eighth"){    
+    if (type=="eighth" || type=="dottedEighth" || type=="eighthTriplet"){    
         canvasContent.moveTo(x+310, y-20);
         canvasContent.lineTo(x+318, y-8);
     }
-    if (type=="sixteenth"){
+    if (type=="sixteenth" ){
         canvasContent.moveTo(x+310, y-20);
         canvasContent.lineTo(x+318, y-8);
         canvasContent.moveTo(x+310, y-14);
         canvasContent.lineTo(x+318, y-2);
    
     }
+    if (type=='dottedEighth' || type=='dottedQuarter'){
+        canvasContent.fillRect(x+314,y+3,4,4); 
+    }
 
     canvasContent.stroke();
 }
 
 function drawNote(beat, pitch, type){
-
+    if (type==undefined) type='quarter';
     let y= pitchToYPosition(pitch);
     let beatNow=timer.getCurrentBeat();
     let x =canvasWidth+((beat-beatNow)*75-offset*2)
 
     if (x<0){
-        drawNoteSymbol(x,y,'black','sixteenth')
+        drawNoteSymbol(x,y,'black',type)
     }
     else{
-        drawNoteSymbol(x,y,'grey')
+        drawNoteSymbol(x,y,'grey',type)
     }
 }
 

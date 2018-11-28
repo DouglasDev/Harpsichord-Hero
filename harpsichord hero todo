@@ -1,9 +1,16 @@
--feature - implement note types for motif (chromatic, chord tone)
--feature - implement note length visuals for motif
--feature - record and share songs
--repeating chord progressions
+FEATURES:
+-20+ motifs -half done
+-implement note length visuals for motif
+-add more songs
 
+-BUGS:
 
+MINOR FEATURES:
+-dominant 7th in bright red
+
+FUTURE FEATURES:
+-record and share songs
+-multiplayer battles
 
 
 Chords.ChordArray=

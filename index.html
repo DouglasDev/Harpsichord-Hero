@@ -4,6 +4,43 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
     	<link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="main-text">
+            <h2>Harpsichord Hero</h2>
+            <p> 
+                <select id="songDropDown">
+                    <option value="LaFollia">La Follia - Vivaldi</option>
+                    <option value="WinterLargo">Winter Mvt. 2 Largo - Vivaldi</option>
+                    <option value="AdagioAlbinoni">Adagio - Albinoni</option>
+                </select>
+                <button id="start-button" onclick="start()">Start</button>
+            </p>
+        </div>        
+        <img class="right-img" src="images/baroque-music.jpg" alt="ensemble">
+        <img class="left-img" src="images/vivaldirockstyle21li-vi.jpg" alt="Vivaldi">
+        <img class="right-img" src="images/Bach-Shades-2.jpg" alt="Bach">
+        <img class="left-img" src="images/carousel_harpsichord.jpg" alt="harpsichord with orchestra">
+
+        
+        <canvas width="600" height="480"></canvas>
+        
+        <div class="main-text">
+            <h2>Get ready to rock out like it's 1685!</h2>
+            <h3>Controls: <br>
+                <u>left click:</u> play chord tones,
+                <u>mouse+space:</u> move cursor,
+                <u>number key row:</u> play chords <br>
+                <u>letter keys - top 2 rows:</u> play motifs and ornaments,
+                <u>letter keys - bottom row:</u> select rhythm<br>
+                <u>Shift:</u> invert motif,
+                <u>Tab/Enter:</u> next motif descend <br>
+                <img id="keyboard-layout" src="images/keyboard layout.png" alt="keyboard layout">
+            </h3>
+        </div>
+    </body>
 
         <script src="vendors/jquery-3.3.1.min.js"></script>
         <script src="vendors/teoria.js"></script>
@@ -33,35 +70,12 @@
 
         <script src="soundfont/string_ensemble_2-ogg.js" type="text/javascript"></script>
 
-        <link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC" rel="stylesheet">
-    </head>
-
-    <body>
-        <img class="right-img" src="images/baroque-music.jpg" alt="ensemble">
-        <img class="left-img" src="images/vivaldirockstyle21li-vi.jpg" alt="Vivaldi">
-        <img class="right-img" src="images/Bach-Shades-2.jpg" alt="Bach">
-        <img class="left-img" src="images/carousel_harpsichord.jpg" alt="harpsichord with orchestra">
-        <div class="main-text">
-            <h2>Harpsichord Hero</h2>
-            <p> <button id="start-button" onclick="start()">Start</button></p>
-        </div>
-        
-        <canvas width="600" height="480"></canvas>
-        
-        <div class="main-text">
-            <h2>Get ready to rock out like it's 1685!</h2>
-            <h3>mouse - select note, left click - play note, letter keys - play motifs,
-                Space - 2x speed, Shift - invert motif
-
-            </h3>
-        </div>
-    </body>
-        <script src="js/timing.js" type="text/javascript"></script>
-        <script src="js/notesAndMouse.js" type="text/javascript"></script>
-        <script src="js/chordsAndScales.js" type="text/javascript"></script>
-        <script src="js/view.js" type="text/javascript"></script>
-        <script src="js/instumentData.js" type="text/javascript"></script>
-        <script src="js/songData.js" type="text/javascript"></script>
-        <script src="js/app-v2.js" type="text/javascript"></script>
+        <script src="js/timing.js" type="text/javascript" defer></script>
+        <script src="js/notesAndMouse.js" type="text/javascript" defer></script>
+        <script src="js/chordsAndScales.js" type="text/javascript" defer></script>
+        <script src="js/view.js" type="text/javascript" defer></script>
+        <script src="js/instumentData.js" type="text/javascript" defer></script>
+        <script src="js/songData.js" type="text/javascript" defer></script>
+        <script src="js/app-v2.js" type="text/javascript" defer></script>
 
 </html>

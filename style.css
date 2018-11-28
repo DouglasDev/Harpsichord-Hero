@@ -59,6 +59,10 @@ img {
 }
 
 
+#keyboard-layout{
+    width: 60%;
+}
+
 /*
 canvas{
     float: right;

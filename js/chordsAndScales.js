@@ -63,7 +63,8 @@ function getEnharmonic(note){
 
 let Chords = {
     load: function(array){
-        this.ChordArray = prepareChordTimeAndPitchArray(songChords);
+        this.ChordArray = prepareChordTimeAndPitchArray(array);
+       // console.log(this.ChordArray)
     },
     printChords: function(){
         let beatNow=timer.getCurrentBeat();
@@ -74,10 +75,18 @@ let Chords = {
             let chordLeft= 600+((chord.startingBeat-beatNow)*75-300)
             let chordRight= 600+((chord.startingBeat-beatNow)*75-300)+(600/8)*chord.beats
             //check if chord is onscreen
-            if((chordRight<600 && chordRight>0) || (chordLeft<600 && chordLeft>0)){
+            if((chordRight<600 && chordRight>0) || (chordLeft<600 && chordLeft>0)|| (chordRight>600 && chordLeft<0)){
                 //console.log(index)
                 let current;
-                index==this.getCurrentChord().index ? current=true : current=false
+                   // console.log(this.getCurrentChord().index)
+                   let currentChordIndex;
+                   if (this.getCurrentChord()==undefined){
+                    currentChordIndex=0;
+                   }
+                   else{
+                    currentChordIndex=this.getCurrentChord().index;
+                   }
+                index==currentChordIndex ? current=true : current=false
 
                 chord.allPitches.forEach(pitchData=>{
                     let color;
