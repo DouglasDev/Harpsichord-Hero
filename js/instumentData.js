@@ -157,6 +157,3 @@ function prepareAllNotesEnharmonics(){
 }
 
 prepareAllNotesEnharmonics();
-
-
-//console.log(teoria.note(allNotes[1].note).enharmonics(true).toString(true).split('').splice(-3,2).join('') )
