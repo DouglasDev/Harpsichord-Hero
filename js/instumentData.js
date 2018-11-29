@@ -12,11 +12,11 @@ function setNoteLengths(BPM) {
 
     rhythmObject={
         'z':['eighth'],
-        'x':['eighthTriplet'],
-        'c':['quarter','eighth'],
-        'v':['quarter','eighth','eighth','quarter','quarter'],
-        'b':['quarterTriplet','eighthTriplet'],
-        'n':['eighth','eighth','quarter'],
+        'x':['eighth','eighth','quarter'],
+        'c':['quarter','eighth','eighth','quarter','quarter'],
+        'v':['eighthTriplet'],
+        'b':['quarter','eighth'],
+        'n':['quarterTriplet','eighthTriplet'],
         'm':['sixteenth'],        
     };
 }
@@ -25,43 +25,97 @@ let motifObject={}
 function generateMotifObject(){
     motifObject={
     //top row - motifs
-    'q':            [ { presetRhythm:true, interval:1,chordTone:true,offsetFutureNotes:true},
-                      { interval:3, silent:true,chordTone:true,offsetFutureNotes:true},
-                      { interval:2},
-                      { interval:3},
-                      { interval:1,chordTone:true,undoOffset:true},
-                      { interval:2, silent:true}],
-    'w':convertTime([ { type: 'eighth', interval:1}, 
-                      { type: 'eighth', interval:2, chordTone:true,offsetFutureNotes:true},
-                      { type: 'eighth', interval:3},
-                      { type: 'eighth', interval:4},
-                      { type: 'eighth', interval:2, silent:true}]),    
-    'e':convertTime([ { type: 'eighth', interval:1}, 
-                      { type: 'eighth', interval:2,chordTone:true,offsetFutureNotes:true},
-                      { type: 'eighth', interval:2},
-                      { type: 'eighth', interval:3},
-                      { type: 'eighth', interval:3, silent:true}]),
+    'q':[ { presetRhythm:true, interval:1,chordTone:true,offsetFutureNotes:true},
+          { interval:2},
+          { interval:3,chordTone:true,},
+          { interval:1,chordTone:true},
+          { interval:2, silent:true}],
+
+    'w':[ { presetRhythm:true, interval:1}, 
+        { interval:2, chordTone:true,offsetFutureNotes:true},
+        { interval:3},
+        { interval:4},
+        { interval:2, silent:true}],    
+    'e':convertTime([ { presetRhythm:true, interval:1}, 
+                      {  interval:2,chordTone:true,offsetFutureNotes:true},
+                      {  interval:2},
+                      {  interval:3},
+                      {  interval:3, silent:true}]),
+    'r':convertTime([ { type: 'eighthTriplet', interval:1,chordTone:true,offsetFutureNotes:true},
+                      { type: 'eighthTriplet',interval:2},
+                      { type: 'eighthTriplet',interval:3,chordTone:true},
+                      { type: 'quarter',interval:3,chordTone:true}]),
+    't':[ { presetRhythm:true, interval:1,chordTone:true,offsetFutureNotes:true }, 
+        { interval:-3,descend:true,chordTone:true},
+        { interval:1},
+        { interval:2},
+        { interval:2,silent:true}],   
+    'y':[ {presetRhythm:true, interval:1,chordTone:true,offsetFutureNotes:true }, 
+        { interval:-2},
+        { interval:2},
+        { interval:1},
+        { interval:2,silent:true,}],  
+    'u':[ {presetRhythm:true, interval:1,chordTone:true,offsetFutureNotes:true }, 
+        { interval:2},
+        { interval:3},
+        { interval:4},
+        { interval:5,chordTone:true,},
+        { interval:3,chordTone:true},
+        { interval:1,chordTone:true},
+        { interval:-3,chordTone:true,descend:true},
+        { interval:-3,chordTone:true,descend:true, silent:true}],    
+
+    //'i'
+    //'o'
+    //'p'
+
+    'g':[ {presetRhythm:true, interval:1,chordTone:true,offsetFutureNotes:true }, 
+        { interval:-2},
+        { interval:1,chordTone:true,offsetFutureNotes:true},
+        { interval:-3,chordTone:true,descend:true,offsetFutureNotes:true},
+        { interval:1,chordTone:true,offsetFutureNotes:true, undoOffset:true},
+        { interval:-4,chordTone:true,descend:true,},
+        { interval:1,chordTone:true,offsetFutureNotes:true},
+        { interval:-3},
+        { interval:1,chordTone:true,offsetFutureNotes:true},
+        { interval:-2},
+        { interval:1,chordTone:true,offsetFutureNotes:true}],    
+    'h':[ {presetRhythm:true, interval:1,chordTone:true,offsetFutureNotes:true }, 
+        { interval:-4,chordTone:true,descend:true,},
+        { interval:1,chordTone:true,offsetFutureNotes:true,undoOffset:true},
+        { interval:3,chordTone:true},
+        { interval:2},
+        { interval:-4,chordTone:true,descend:true,},
+        { interval:2},
+        { interval:4,chordTone:true},
+        { interval:2,silent:true}
+        ],    
+    //'j'
+    
+    //'k'
+    //'l'
+
+
 
     //middle row - ornaments
-    'a':convertTime([ { type: 'sixteenth', interval:1,chordTone:true,offsetFutureNotes:true}, 
-                      { type: 'sixteenth', interval:-2,chromatic:true},
+    'a':convertTime([ { type: 'eighthTriplet',silent:true, interval:1,chordTone:true,offsetFutureNotes:true, presetTempo:true}, 
+                      { type: 'eighthTriplet', interval:2},
+                      { type: 'eighth', interval:1}]),    
+    's':convertTime([ { type: 'eighthTriplet', interval:1,chordTone:true,offsetFutureNotes:true, presetTempo:true}, 
+                      { type: 'eighthTriplet', interval:2},
+                      { type: 'eighthTriplet', interval:1},
+                      { type: 'eighthTriplet', interval:-2},
+                      { type: 'eighthTriplet', interval:1}]),
+    'd':convertTime([ { type: 'sixteenth', interval:1,chordTone:true,offsetFutureNotes:true, presetTempo:true}, 
+                      { type: 'sixteenth', interval:-2},
                       { type: 'eighth', interval:1}]),
-    's':convertTime([ { type: 'eighth', interval:1}, 
-                      { type: 'eighth', interval:-2,chromatic:true},
-                      { type: 'eighth', interval:-3,chromatic:true}]),
-        'd':convertTime([ { presetRhythm:true,type: 'eighth', interval:1}, 
-            { type: 'eighth', interval:1}, 
-            { type: 'eighth', interval:1}, 
-            { type: 'eighth', interval:1}, 
-            { type: 'eighth', interval:1}, 
-            { type: 'eighth', interval:1}, 
-            { type: 'eighth', interval:1}, 
-            { type: 'eighth', interval:1}, 
-            { type: 'eighth', interval:1}, 
-            { type: 'eighth', interval:1}, 
-            { type: 'eighth', interval:1}, 
-            { type: 'eighth', interval:1}, 
-                     ]),
+    'f':convertTime([{type: 'eighth', interval:1,chordTone:true,offsetFutureNotes:true,silent:true, presetTempo:true},  
+                     {type: 'eighth', interval:2}, 
+                      {type: 'eighthTriplet', interval:1}, 
+                      {type: 'eighthTriplet', interval:2},
+                      {type: 'eighthTriplet', interval:1},
+                      {type: 'sixteenth', interval:2},
+                      {type: 'sixteenth', interval:1}]),
     
     }
 }
@@ -79,8 +133,7 @@ function convertTime(arr){
 
 function getPitchEnharmonic(pitch){
     let enharmonic=getEnharmonic(pitch)
-    //console.log(enharmonic)
-    if (enharmonic.length){
+    if (enharmonic){
         let letterName = enharmonic[0];
         let accidental='';
         if (enharmonic.length>1) accidental=enharmonic[1];

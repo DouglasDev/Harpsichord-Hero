@@ -55,7 +55,7 @@ let doubleSpeed=false,
     cursorControl=false;
 
 let SoundFontInstrumentIsSetup=false;
-
+let currentBPM
 //starts background midi
 function start(){
     //document.getElementById("start-button").style.color = "grey";
@@ -79,6 +79,7 @@ function start(){
 
             Chords.load(songMenu[songValue].chords);
             setNoteLengths(songMenu[songValue].BPM);
+            currentBPM=songMenu[songValue].BPM;
             generateMotifObject()
             //default rhythm
             currentRhythm=rhythmObject['z'];
@@ -132,6 +133,7 @@ function setupSoundFontInstrument(){
             //play motifs and ornaments
             if (motifObject.hasOwnProperty(pressedkey)){
                 let motifOutput= generateMotifNotes(e,motifObject[pressedkey])
+
                 harpsichord.schedule(ac.currentTime, motifOutput);
             }
             //select rhythm
