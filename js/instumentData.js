@@ -63,7 +63,7 @@ function generateMotifObject(){
         { interval:3,chordTone:true},
         { interval:1,chordTone:true},
         { interval:-3,chordTone:true,descend:true},
-        { interval:-3,chordTone:true,descend:true, silent:true}],    
+        { interval:-2,chordTone:true,descend:true, silent:true}],    
 
     //'i'
     //'o'
@@ -74,6 +74,7 @@ function generateMotifObject(){
         { interval:1,chordTone:true,offsetFutureNotes:true},
         { interval:-3,chordTone:true,descend:true,offsetFutureNotes:true},
         { interval:1,chordTone:true,offsetFutureNotes:true, undoOffset:true},
+        { interval:-3,chordTone:true,descend:true,offsetFutureNotes:true,silent:true},
         { interval:-4,chordTone:true,descend:true,},
         { interval:1,chordTone:true,offsetFutureNotes:true},
         { interval:-3},
@@ -90,7 +91,12 @@ function generateMotifObject(){
         { interval:4,chordTone:true},
         { interval:2,silent:true}
         ],    
-    //'j'
+    'j':convertTime([{type: 'eighthTriplet',presetTempo:true, interval:1,chordTone:true,offsetFutureNotes:true }, 
+        { type: 'eighthTriplet',interval:2,chromatic:true},
+        { type: 'eighthTriplet',interval:3,chromatic:true},
+        { type: 'eighthTriplet',interval:4,chromatic:true},
+        { type: 'eighthTriplet',interval:4,chordTone:true},
+        { type: 'eighthTriplet',interval:1,chordTone:true}]),    
     
     //'k'
     //'l'

@@ -63,7 +63,6 @@ function pitchToYPosition(pitch){
             pitchIndex=index;
         }
     });
-    //console.log(rect.top)
     return pitchIndex*lineWidth/2;
 }
 
