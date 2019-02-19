@@ -1,3 +1,5 @@
+![screenshot](https://i.ibb.co/VtLwQ9x/screenshot.png)
+
 # Harpsichord-Hero
 
 Games based around playing an electronic instrument such as 'Guitar Hero' give non-musicians a taste of what it's like to play music in an ensemble. However, since the player is limited to playing a predefined pattern of notes with no control over tempo, dynamics, or rhythm, opportunites for creative play are limited. 
