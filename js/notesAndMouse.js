@@ -51,7 +51,7 @@ function generateMotifNotes(e, motif) {
         motif[0].type = currentRhythm[0]
         let rhythmArrayPosition = 0;
         motif.forEach((note, motifNoteIndex) => {
-            console.log(currentRhythm[rhythmArrayPosition])
+          //  console.log(currentRhythm[rhythmArrayPosition])
 
             if (motifNoteIndex > 0 && note.silent!=true) {
                 timeCounter += noteLengths[currentRhythm[rhythmArrayPosition]];                
@@ -122,6 +122,7 @@ function generateMotifNotes(e, motif) {
             }
 
             //calculate note
+            //can't remember what this is supposed to do, probably should delete if else
             if (descend == true && el.silent == true) {
                 note = allOctaveScale[position + (invert * -noteInterval) + localOffset + offset];
             } else {
@@ -146,7 +147,7 @@ function generateMotifNotes(e, motif) {
                 let allPitches = allNotes.map(el => el.enharmonicPitch);
                 indexCheck = allPitches.indexOf(note)
             }
-            console.log(indexCheck,note)
+          //  console.log(indexCheck,note)
             if (indexCheck > -1) {
                 visualNotes.push({
                     beat: timer.getCurrentBeat() + time * 3 / 2,

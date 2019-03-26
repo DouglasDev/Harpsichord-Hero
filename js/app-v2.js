@@ -6,6 +6,7 @@ window.onbeforeunload = function () {
 //Setup canvas and global variables
 const canvasSelector = document.querySelector("canvas"),
       canvasContent = canvasSelector.getContext("2d");
+
 //Canvas size
 const canvasWidth=600,
       canvasHeight=480,
@@ -60,10 +61,16 @@ function start(){
     //document.getElementById("start-button").style.color = "grey";
     //document.getElementById("start-button").disabled = true;
 
+canvasContent.font = "40px Comic Sans MS";
+canvasContent.fillStyle = "black";
+canvasContent.textAlign = "center";
+canvasContent.fillText("Loading...", canvasSelector.width/2, canvasSelector.height/2); 
+
+
     let songValue=songDropDown.value;
     MIDI.loadPlugin({
         soundfontUrl: "soundfont/",
-        onsuccess: function() {
+        onsuccess: async function() {
             window.onbeforeunload = function () {
                 window.scrollTo(0, 0);
             }
@@ -72,42 +79,49 @@ function start(){
             visualNotes = [];
 
             if (SoundFontInstrumentIsSetup==false){
-                setupSoundFontInstrument();
-                SoundFontInstrumentIsSetup=true;
+                await setupSoundFontInstrument();
+                startSong()
+            }
+            else{
+                startSong()
             }
 
-            Chords.load(songMenu[songValue].chords);
-            setNoteLengths(songMenu[songValue].BPM);
-            currentBPM=songMenu[songValue].BPM;
-            generateMotifObject()
-            //default rhythm
-            currentRhythm=rhythmObject['z'];
+            function startSong(){
+                SoundFontInstrumentIsSetup=true;
 
-            MIDI.programChange(0, MIDI.GM.byName["string_ensemble_2"].number);
-            MIDI.setVolume(0, 22);
-            MIDI.Player.BPM = songMenu[songValue].BPM;
-            //MIDI.Player.loadFile('midi/vivaldi_4_stagioni_inverno_2_(c)pollen.mid', MIDI.Player.start);
-            MIDI.Player.loadFile(songMenu[songValue].midi, MIDI.Player.start);
+                Chords.load(songMenu[songValue].chords);
+                setNoteLengths(songMenu[songValue].BPM);
+                currentBPM=songMenu[songValue].BPM;
+                generateMotifObject()
+                //default rhythm
+                currentRhythm=rhythmObject['z'];
 
-            timer.start(songMenu[songValue].BPM);
-            
-            startViewLoop(frameRate);
+                MIDI.programChange(0, MIDI.GM.byName["string_ensemble_2"].number);
+                MIDI.setVolume(0, 22);
+                MIDI.Player.BPM = songMenu[songValue].BPM;
+                //MIDI.Player.loadFile('midi/vivaldi_4_stagioni_inverno_2_(c)pollen.mid', MIDI.Player.start);
+                MIDI.Player.loadFile(songMenu[songValue].midi, MIDI.Player.start);
+
+                timer.start(songMenu[songValue].BPM);
+                
+                startViewLoop(frameRate);                
+            }
         //debug
-        setInterval(()=>{
-            //console.log(Chords.getCurrentChord())
-              //  console.log(currentRhythm)
-
-        },500)
+        // setInterval(()=>{
+        //     console.log(Chords.getCurrentChord())
+        //     console.log(currentRhythm)
+        // },500)
         }
     });
 }
 
+let ac
 
-let ac = new AudioContext();
+async function setupSoundFontInstrument(){
+    
+    ac = new AudioContext();
 
-function setupSoundFontInstrument(){
-
-    Soundfont.instrument(ac, 'harpsichord').then(
+  return Soundfont.instrument(ac, 'harpsichord').then(
         function(harpsichord) {
         //event listeners
 
@@ -118,7 +132,7 @@ function setupSoundFontInstrument(){
         });
 
         document.addEventListener("mousedown", function playNewNote(e) {
-            console.log(canvasSelector.getBoundingClientRect())
+          //  console.log(canvasSelector.getBoundingClientRect())
             findClosestAllowedMouseY(e.pageY);
             newNote(harpsichord);
         });
