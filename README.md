@@ -1,4 +1,4 @@
-[Live Demo](https://douglasdev.github.io/projects/harpsichordHero/index.html)
+[Live Demo](https://douglasdev.github.io/Harpsichord-Hero/)
 
 ![screenshot](https://i.ibb.co/VtLwQ9x/screenshot.png)
 
